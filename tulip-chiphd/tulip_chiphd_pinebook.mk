@@ -4,7 +4,7 @@ $(call inherit-product, build/target/product/full_base.mk)
 GAPPS_VARIANT := micro
 GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_BROWSER_OVERRIDES := true
-
+WITHOUT_CHECK_API = true
 PRODUCT_PACKAGES += \
     Launcher3
 
