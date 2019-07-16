@@ -25,7 +25,7 @@ endif
 KERNEL_CCSLOP := $(filter-out time_macros,$(subst $(comma), ,$(CCACHE_SLOPPINESS)))
 KERNEL_CCSLOP := $(subst $(space),$(comma),$(KERNEL_CCSLOP))
 
-KERNEL_OUT_DIR := $(ANDROID_BUILD_TOP)/$(PRODUCT_OUT)/linux/kernel
+KERNEL_OUT_DIR := $(PRODUCT_OUT)/linux/kernel
 KERNEL_MODINSTALL := modules_install
 KERNEL_OUT_MODINSTALL := $(KERNEL_OUT_DIR)/$(KERNEL_MODINSTALL)
 KERNEL_MODULES_ROOT := $(PRODUCT_OUT)/root
@@ -49,14 +49,14 @@ KERNEL_BLD_ENV := CROSS_COMPILE=$(KERNEL_CROSS_COMP) \
     CCACHE_SLOPPINESS=$(KERNEL_CCSLOP)
 KERNEL_FAKE_DEPMOD := $(KERNEL_OUT_DIR)/fakedepmod/lib/modules
 
-KERNEL_DEFCONFIG ?= $(KERNEL_SRC_DIR)/arch/$(TARGET_KERNEL_ARCH)/configs/$(KERNEL_CFG_NAME)_defconfig
+KERNEL_DEFCONFIG = $(KERNEL_SRC_DIR)/arch/$(TARGET_KERNEL_ARCH)/configs/$(KERNEL_CFG_NAME)_defconfig
 KERNEL_VERSION_FILE := $(KERNEL_OUT_DIR)/include/config/kernel.release
 KERNEL_BZIMAGE := $(PRODUCT_OUT)/kernel
 
 $(KERNEL_CONFIG): $(KERNEL_DEFCONFIG)
-	$(hide) echo Regenerating kernel config $(KERNEL_OUT_DIR)
+	$(hide) echo Regenerating kernel config $(KERNEL_OUT_DIR) $(KERNEL_SRC_DIR)/arch/$(TARGET_KERNEL_ARCH)/configs/$(KERNEL_CFG_NAME)_defconfig
 	$(hide) mkdir -p $(KERNEL_OUT_DIR)
-	$(hide) $(KERNEL_BLD_ENV) $(MAKE) -C $(KERNEL_SRC_DIR) $(KERNEL_BLD_FLAGS) $(notdir $(KERNEL_DEFCONFIG))
+	$(hide) $(KERNEL_BLD_ENV) $(MAKE) -C $(KERNEL_SRC_DIR) $(KERNEL_BLD_FLAGS) $(KERNEL_CFG_NAME)_defconfig
 
 ifeq (,$(filter build_kernel-nodeps,$(MAKECMDGOALS)))
 $(KERNEL_BZIMAGE): $(MINIGZIP)
