@@ -25,7 +25,7 @@ endif
 KERNEL_CCSLOP := $(filter-out time_macros,$(subst $(comma), ,$(CCACHE_SLOPPINESS)))
 KERNEL_CCSLOP := $(subst $(space),$(comma),$(KERNEL_CCSLOP))
 
-KERNEL_OUT_DIR := $(PRODUCT_OUT)/linux/kernel
+KERNEL_OUT_DIR := $(PRODUCT_OUT)/obj/KERNEL_OBJ
 KERNEL_MODINSTALL := modules_install
 KERNEL_OUT_MODINSTALL := $(KERNEL_OUT_DIR)/$(KERNEL_MODINSTALL)
 KERNEL_MODULES_ROOT := $(PRODUCT_OUT)/root
