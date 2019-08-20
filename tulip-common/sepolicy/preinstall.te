@@ -7,3 +7,6 @@ allow preinstall self:capability { dac_override fowner };
 allow preinstall vfat:dir { search mounton write add_name };
 allow preinstall vfat:file { create read write open getattr };
 
+allow preinstall system_data_file:dir { add_name };
+allow preinstall system_data_file:file { create read write open };
+
