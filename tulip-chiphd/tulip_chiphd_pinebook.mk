@@ -44,3 +44,4 @@ PRODUCT_NAME := tulip_chiphd_pinebook
 PRODUCT_DEVICE := tulip-chiphd
 PRODUCT_MODEL := Pinebook
 PRODUCT_MANUFACTURER := Allwinner
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
