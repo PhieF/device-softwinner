@@ -14,12 +14,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
        dalvik.vm.dex2oat-filter=""
 endif
 
-# preinstall apk
-#PRODUCT_PACKAGES += \
-    DragonFire \
-    DragonPhone \
-    DragonAging \
-
 # usb
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
@@ -54,8 +48,8 @@ PRODUCT_PACKAGES += \
     sayeye \
     sdc
 
-PRODUCT_PACKAGES += \
-    SoundRecorder
+#PRODUCT_PACKAGES += \
+#    SoundRecorder
 #    LoggerService \
 #    LogCopyService \
 #    GooglePinyinIME
