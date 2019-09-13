@@ -37,7 +37,7 @@ TARGET_SCREEN_HEIGHT = 1080
 ifeq ($(HOST_OS),linux)
   ifneq ($(filter user userdebug,$(TARGET_BUILD_VARIANT)),)
     ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT := false
     endif
   endif
 endif
